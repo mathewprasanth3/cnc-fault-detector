@@ -8,6 +8,11 @@ import copy
 from src.dataset import load_data
 from src.model import CNCFaultDetector
 
+# --- MLFLOW CONFIG ---
+# This ensures the script talks to the SAME server your UI is using
+mlflow.set_tracking_uri("http://127.0.0.1:5000") 
+mlflow.set_experiment("CNC_Fault_Detection")
+
 def train(config=None):
     if config is None:
         config = {
