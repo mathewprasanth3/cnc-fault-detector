@@ -18,6 +18,8 @@ def train(config=None):
             "dropout_rate": 0.3,
         }
 
+    mlflow.set_tracking_uri("http://127.0.0.1:5000")
+
     device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
     print(f"Training on: {device}")
 
@@ -31,10 +33,11 @@ def train(config=None):
         dropout_rate=config["dropout_rate"]
     ).to(device)
 
-    # pos_weight tells the loss function to penalise missing a real failure much more
-    # than incorrectly flagging a healthy machine — critical for imbalanced data like ours
-    failure_ratio = 9661 / 339
-    pos_weight = torch.tensor([failure_ratio]).to(device)
+    y_train = train_dataset.labels.numpy()
+    num_failures = y_train.sum()
+    num_non_failures = len(y_train) - num_failures
+    pos_weight = torch.tensor([num_non_failures / max(num_failures, 1)]).to(device)
+
     criterion = nn.BCEWithLogitsLoss(pos_weight=pos_weight)
 
     optimizer = torch.optim.Adam(model.parameters(), lr=config["learning_rate"])

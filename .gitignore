@@ -17,3 +17,11 @@ data/
 *.onnx
 mlruns/
 .ipynb_checkpoints/
+
+# MLflow outputs
+mlruns/
+mlartifacts/
+outputs/
+*.pt
+*.pth
+mlflow.db
