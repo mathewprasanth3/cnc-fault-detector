@@ -8,3 +8,12 @@ wheels/
 
 # Virtual environments
 .venv
+
+
+*.pyc
+.DS_Store
+data/
+*.pt
+*.onnx
+mlruns/
+.ipynb_checkpoints/
