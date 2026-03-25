@@ -19,7 +19,6 @@ class CNCFaultDetector(nn.Module):
 
         # single output neuron with sigmoid gives us a probability between 0 and 1
         layers.append(nn.Linear(prev_size, 1))
-        layers.append(nn.Sigmoid())
 
         self.network = nn.Sequential(*layers)
 
