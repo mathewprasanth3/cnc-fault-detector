@@ -1,0 +1,22 @@
+# MLflow generated files — not needed in container
+mlruns/
+mlartifacts/
+mlflow.db
+eval_cm.txt
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# Data — only scaler.pkl is needed (copied explicitly in Dockerfile)
+data/ai4i2020.csv
+data/ai4i.zip
+
+# Dev files
+notebooks/
+tests/
+*.md
+.git/
+.gitignore
