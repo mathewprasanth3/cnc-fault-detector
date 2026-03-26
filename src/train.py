@@ -8,7 +8,6 @@ import copy
 from src.dataset import load_data
 from src.model import CNCFaultDetector
 
-# --- MLFLOW CONFIG ---
 # This ensures the script talks to the SAME server your UI is using
 mlflow.set_tracking_uri("http://127.0.0.1:5000") 
 mlflow.set_experiment("CNC_Fault_Detection")
@@ -51,7 +50,7 @@ def train(config=None):
         mlflow.log_params(config)
 
         for epoch in range(config["epochs"]):
-            # --- Training Phase ---
+            # Training Phase 
             model.train()
             t_loss = 0.0
             for feat, lab in train_loader:
@@ -62,7 +61,7 @@ def train(config=None):
                 optimizer.step()
                 t_loss += loss.item()
 
-            # --- Validation Phase ---
+            # Validation Phase
             model.eval()
             v_loss = 0.0
             with torch.no_grad():
@@ -76,7 +75,7 @@ def train(config=None):
 
             mlflow.log_metrics({"train_loss": t_loss, "val_loss": v_loss}, step=epoch)
 
-            # --- Early Stopping Logic ---
+            # Early Stopping Logic
             if v_loss < best_vloss:
                 best_vloss = v_loss
                 epochs_no_improve = 0
