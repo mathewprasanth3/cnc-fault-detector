@@ -1,0 +1,19 @@
+[project]
+name = "cnc-fault-detector"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi>=0.135.2",
+    "gradio>=6.10.0",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.8",
+    "mlflow>=3.10.1",
+    "pandas>=2.3.3",
+    "scikit-learn>=1.8.0",
+    "seaborn>=0.13.2",
+    "torch>=2.11.0",
+    "torchvision>=0.26.0",
+    "uvicorn>=0.42.0",
+]
