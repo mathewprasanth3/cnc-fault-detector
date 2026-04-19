@@ -1,0 +1,29 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+
+*.pyc
+.DS_Store
+data/
+*.pt
+*.onnx
+mlruns/
+.ipynb_checkpoints/
+
+# MLflow outputs
+mlruns/
+mlartifacts/
+outputs/
+*.pt
+*.pth
+mlflow.db
+
+eval_cm.txt
